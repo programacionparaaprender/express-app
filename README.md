@@ -21,11 +21,12 @@
 >- {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"}
 >- curl -X POST http://localhost:9000/api/login -H "Content-Type: application/json" -d '{"email":"jose@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer [tu_token]"
->- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"
+>- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY3MzA1LCJleHAiOjE3MjUwNzA5MDV9.IZ3drhWtILVqFbQOQYREq5MPPAWuzPCitMDuo-JcatU"
+>- curl -X GET http://localhost:9000/api/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY3MzA1LCJleHAiOjE3MjUwNzA5MDV9.IZ3drhWtILVqFbQOQYREq5MPPAWuzPCitMDuo-JcatU"
 
-###
+### paquetes a instalar
 >- npm install express cors sequelize tedious jsonwebtoken bcryptjs
-
+>- npm install --save-dev sequelize-cli
 
 ### conectar express a mysql
 >- npm install express sequelize mysql2
@@ -58,8 +59,6 @@
 
 
 ### comandos
-
->- npm install --save-dev sequelize-cli
 >- npx sequelize-cli init
 >- npx sequelize-cli migration:generate --name migra-1
 >- npx sequelize-cli db:migrate
@@ -87,16 +86,3 @@ npx sequelize-cli db:migrate:status
 
 # Revertir la última migración
 npx sequelize-cli db:migrate:undo
-
-
-### configurar proyecto express
->- npm install body-parser core-js cors express
->- npm install --save-dev ts-node
->- npm i -D typescript @types/express @types/node
-
-### depurar con la extensión
->- JavaScript Debugger (Nightly)
-
-
-### error TypeScript compiler options "target" and "useDefineForClassFields" are set to "ES2022" and "false" respectively by the Angular CLI.
->- https://stackoverflow.com/questions/75047760/typescript-target-warnings-after-angular-15-update
