@@ -9,24 +9,22 @@
 
 ### texto
 >- proyecto api express con cors y orm conectado a sql server usando javascript
+>- proyecto api express con cors, jwt token y orm conectado a sql server usando javascript y curls
+
 
 
 ### pruebas curls
 >- curl -X POST http://localhost:9000/api/users -H "Content-Type: application/json" -d '{"name":"Luis","email":"luis@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/users -H "Content-Type: application/json"
 >- curl -X GET http://localhost:9000/api/users/1 -H "Content-Type: application/json"
-
+>- curl -X POST http://localhost:9000/api/register -H "Content-Type: application/json" -d '{"name":"jose","email":"jose@example.com","password":"123456"}'
+>- {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"}
+>- curl -X POST http://localhost:9000/api/login -H "Content-Type: application/json" -d '{"email":"jose@example.com","password":"123456"}'
+>- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer [tu_token]"
+>- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"
 
 ###
->- npm install --save sequelize sequelize-typescript @types/sequelize
->- npm list sequelize @types/sequelize typescript
->- npm install sequelize@latest @types/sequelize@latest typescript@latest
->- npm install tedious
->- npm uninstall sequelize
->- npm install sequelize
->- npm cache clean --force
->- npm install
->- npm install sequelize@latest @types/sequelize@latest typescript@latest
+>- npm install express cors sequelize tedious jsonwebtoken bcryptjs
 
 
 ### conectar express a mysql
