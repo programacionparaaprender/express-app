@@ -1,17 +1,21 @@
+## courses
+>- https://app.pluralsight.com/library/courses/angular-owasp-secure-coding/table-of-contents
+>- Secure Coding in Angular
+>- owasp-prg/#
 
 ### configuración bootstrap nueva
 >- https://www.techiediaries.com/angular-bootstrap/
 >- https://www.tutsmake.com/angular-17-install-add-bootstrap-5-example/#google_vignette
 
 ### texto
->- proyecto api express con cors y orm conectado a sql server usando typescript
->- comando sequelize para realizar migración sql server es2021 @types/express 4
->- proyecto api express con cors y orm conectado a sql server usando typescript es2021 y crear una migración
->- actualizar un registro con sequelize
->- eliminar un registro con sequelize
->- seeder en sequelize express
->- proyecto express sequelize conectado a mysql
->- No se encontraron entradas en el archivo de configuración 'c:/Users/luis1/Documents/htdocs/web-express/tsconfig.json'. Las rutas 'include' especificadas fueron '[\"src\"]' y las rutas 'exclude' fueron '[\"node_modules\"]'.
+>- proyecto api express con cors y orm conectado a sql server usando javascript
+
+
+### pruebas curls
+>- curl -X POST http://localhost:9000/api/users -H "Content-Type: application/json" -d '{"name":"Luis","email":"luis@example.com","password":"123456"}'
+>- curl -X GET http://localhost:9000/api/users -H "Content-Type: application/json"
+>- curl -X GET http://localhost:9000/api/users/1 -H "Content-Type: application/json"
+
 
 ###
 >- npm install --save sequelize sequelize-typescript @types/sequelize
@@ -23,6 +27,7 @@
 >- npm cache clean --force
 >- npm install
 >- npm install sequelize@latest @types/sequelize@latest typescript@latest
+
 
 ### conectar express a mysql
 >- npm install express sequelize mysql2
@@ -45,6 +50,13 @@
 >- npx sequelize-cli db:seed:all
 >- borrara data
 >- npx sequelize-cli db:seed:undo
+
+### para trabajar base de datos especifica configurar
+>- config/config.json
+>- db.js
+>- models/User.js
+>- migrations/20240830165721-create-users-table2.js
+>- .env
 
 
 ### comandos
