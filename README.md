@@ -17,7 +17,7 @@
 >- curl -X POST http://localhost:9000/api/users -H "Content-Type: application/json" -d '{"name":"Luis","email":"luis@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/users -H "Content-Type: application/json"
 >- curl -X GET http://localhost:9000/api/users/1 -H "Content-Type: application/json"
->- curl -X POST http://localhost:9000/api/register -H "Content-Type: application/json" -d '{"name":"jose","email":"jose@example.com","password":"123456"}'
+>- curl -X POST http://localhost:9000/api/register -H "Content-Type: application/json" -d '{"name":"mario","email":"mario@example.com","password":"123456"}'
 >- {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"}
 >- curl -X POST http://localhost:9000/api/login -H "Content-Type: application/json" -d '{"email":"jose@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer [tu_token]"
