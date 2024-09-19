@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cliente Socket.IO</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        ul { list-style-type: none; }
+        input { padding: 10px; width: 300px; }
+        button { padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Chat en tiempo real con Socket.IO</h1>
+    <input id="mensaje" type="text" placeholder="Escribe un mensaje">
+    <button onclick="enviarMensaje()">Enviar</button>
+    <ul id="mensajes"></ul>
+
+    <script>
+        // Conectar al servidor
+        const socket = io('http://localhost:3000');
+
+        // Función para enviar mensajes al servidor
+        function enviarMensaje() {
+            const input = document.getElementById('mensaje');
+            const mensaje = input.value;
+            socket.emit('mensaje', mensaje); // Enviar mensaje al servidor
+            input.value = ''; // Limpiar el input
+        }
+
+        // Escuchar mensajes desde el servidor
+        socket.on('mensaje', (data) => {
+            const listaMensajes = document.getElementById('mensajes');
+            const nuevoMensaje = document.createElement('li');
+            nuevoMensaje.textContent = data;
+            listaMensajes.appendChild(nuevoMensaje);
+        });
+    </script>
+</body>
+</html>
