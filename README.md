@@ -11,8 +11,10 @@
 >- proyecto api express con cors y orm conectado a sql server usando javascript
 >- proyecto api express con cors, jwt token y orm conectado a sql server usando javascript y curls
 >- implementar equivalente a signalr en api express y cliente en index.html
->- enviar un correo por express
 >- socket.io en mi api express que usa sequelize y index.html
+>- logearme desde un login.html a mi api express usando fetch
+>- dashboard.html para obtener los usuarios desde mi api express enviandole el token
+>- enviar un correo por express
 
 
 ### api express implementando socket.io
@@ -29,7 +31,7 @@
 >- curl -X POST http://localhost:9000/api/login -H "Content-Type: application/json" -d '{"email":"jose@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer [tu_token]"
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJtYXJpb0BleGFtcGxlLmNvbSIsImlhdCI6MTcyNTIyNzU4NiwiZXhwIjoxNzI1MjMxMTg2fQ.s026W5i6DLYe4z_RySBVMzw_8Et85qH5wVorPUHySOM"
->- curl -X GET http://localhost:9000/api/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJtYXJpb0BleGFtcGxlLmNvbSIsImlhdCI6MTcyNTIyNzU4NiwiZXhwIjoxNzI1MjMxMTg2fQ.s026W5i6DLYe4z_RySBVMzw_8Et85qH5wVorPUHySOM"
+>- curl -X GET http://localhost:9000/api/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2NzkyODQ3LCJleHAiOjE3MjY3OTY0NDd9.YiwsRxLSdZ4RuqH76XtaT-QsccJ16zBPMDx3UBU0xXY"
 
 ### paquetes a instalar
 >- npm install express cors sequelize tedious jsonwebtoken bcryptjs

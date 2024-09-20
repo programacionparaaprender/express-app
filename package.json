@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prueba": "nodemon server.js",
-    "server": "nodemon index.js",
+    "server": "nodemon server.js",
+    "prueba": "nodemon index.js",
     "start": "nodemon client.js",
     "dev": "nodemon indexintegrado.js",
     "serverio": "nodemon serverio.js",

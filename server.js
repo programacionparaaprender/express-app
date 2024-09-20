@@ -3,30 +3,27 @@ const http = require('http');
 const { Server } = require('socket.io');
 const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
-
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
-
-// Configurar conexión a la base de datos
-const sequelize = new Sequelize('prueba', 'root', '', {
-    host: 'localhost',
-    dialect: 'mysql', // Cambia esto según tu base de datos
+//const io = new Server(server);
+const io = new Server(server, {
+    cors: {
+        origin: "http://localhost:9000", // Cambia esto al origen correcto
+        methods: ["GET", "POST"]
+    }
 });
 
-// Definir modelo de Usuario
-const Usuario = sequelize.define('Usuario', {
-    nombre: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
+const userRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
+const sequelize = require('./config/db');
+require('dotenv').config();
+sequelize.sync().then(() => {
+    console.log('Base de datos sincronizada');
+}).catch(err => {
+    console.error('Failed to sync database:', err);
 });
-
-// Sincronizar modelos con la base de datos
-sequelize.sync()
-    .then(() => console.log('Base de datos sincronizada'))
-    .catch(err => console.error('Error al sincronizar la base de datos:', err));
-
+app.use(cors());
 // Middleware para manejar JSON
 app.use(express.json());
 
@@ -50,13 +47,11 @@ io.on('connection', (socket) => {
 });
 
 // Rutas de la API
-app.get('/api/usuarios', async (req, res) => {
-    const usuarios = await Usuario.findAll();
-    res.json(usuarios);
-});
+app.use('/api', userRoutes);
+app.use('/api', authRoutes);
 
-// Servidor escuchando en el puerto 3000
-const PORT = 3000;
+// Servidor escuchando en el puerto 9000
+const PORT = process.env.PORT || 9000;
 server.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto ${PORT}`);
 });

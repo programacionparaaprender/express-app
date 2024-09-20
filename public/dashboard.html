@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Usuarios</h1>
+    <ul id="userList"></ul>
+
+    <script>
+        async function getUsers() {
+            const token = localStorage.getItem('token'); // Obtener el token de localStorage
+
+            if (!token) {
+                alert('No has iniciado sesión');
+                window.location.href = '/login.html'; // Redirigir si no hay token
+                return;
+            }
+
+            try {
+                const response = await fetch('http://localhost:9000/api/users', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}` // Enviar token en el encabezado
+                    }
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al obtener los usuarios');
+                }
+
+                const users = await response.json();
+                console.log('Usuarios:', users);
+
+                const userList = document.getElementById('userList');
+                users.forEach(user => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${user.name} - ${user.email}`;
+                    userList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+                alert('No se pudo obtener la lista de usuarios');
+            }
+        }
+
+        // Llamar a la función para obtener los usuarios al cargar la página
+        getUsers();
+    </script>
+</body>
+</html>
