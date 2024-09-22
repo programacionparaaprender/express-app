@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js",
-    "prueba": "nodemon index.js",
-    "start": "nodemon client.js",
-    "dev": "nodemon indexintegrado.js",
-    "serverio": "nodemon serverio.js",
-    "server3": "node index.js",
+    "server": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
