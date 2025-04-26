@@ -23,15 +23,17 @@
 
 
 ### pruebas curls
->- curl -X POST http://localhost:9000/api/users -H "Content-Type: application/json" -d '{"name":"Luis","email":"luis@example.com","password":"123456"}'
+
 >- curl -X GET http://localhost:9000/api/users -H "Content-Type: application/json"
 >- curl -X GET http://localhost:9000/api/users/1 -H "Content-Type: application/json"
->- curl -X POST http://localhost:9000/api/register -H "Content-Type: application/json" -d '{"name":"mario","email":"mario@example.com","password":"123456"}'
+>- curl -X POST http://localhost:9000/api/register -H "Content-Type: application/json" -d '{"username":"marioguti","name":"mario","email":"mario@example.com","password":"123456"}'
 >- {"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI1MDY0MDEyLCJleHAiOjE3MjUwNjc2MTJ9.TyO7KIuPJlQEktA1rqtUYy5oF7_xSBXVUsS9BRAAbjo"}
 >- curl -X POST http://localhost:9000/api/login -H "Content-Type: application/json" -d '{"email":"jose@example.com","password":"123456"}'
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer [tu_token]"
 >- curl -X GET http://localhost:9000/api/perfil -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiZW1haWwiOiJtYXJpb0BleGFtcGxlLmNvbSIsImlhdCI6MTcyNTIyNzU4NiwiZXhwIjoxNzI1MjMxMTg2fQ.s026W5i6DLYe4z_RySBVMzw_8Et85qH5wVorPUHySOM"
->- curl -X GET http://localhost:9000/api/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJqb3NlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI2NzkyODQ3LCJleHAiOjE3MjY3OTY0NDd9.YiwsRxLSdZ4RuqH76XtaT-QsccJ16zBPMDx3UBU0xXY"
+>- curl -X GET http://localhost:9000/api/users -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJsdWlzQGV4YW1wbGUuY29tIiwiaWF0IjoxNzI4MjMyOTUwLCJleHAiOjE3MjgyMzY1NTB9.BQ2CbD83mVVO4SH_7_SVNlKRVyvPagqD1I9tWMt7uEU"
+>- curl -X POST http://localhost:9000/api/users -H "Content-Type: application/json" -d '{"username":"luis456","name":"Luis","email":"luis@example.com","password":"123456"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJpb0BleGFtcGxlLmNvbSIsImlhdCI6MTcyODIyNTA4MCwiZXhwIjoxNzI4MjI4NjgwfQ.10xouknl6Rl1v5tty13-32vNW8KDYtMrDgLVMtMTSzk"
+>- curl -X DELETE http://localhost:9000/api/users/2 -H "Content-Type: application/json" -d '{"username":"luis456","name":"Luis","email":"luis@example.com","password":"123456"}' -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJtYXJpb0BleGFtcGxlLmNvbSIsImlhdCI6MTcyODIyNTA4MCwiZXhwIjoxNzI4MjI4NjgwfQ.10xouknl6Rl1v5tty13-32vNW8KDYtMrDgLVMtMTSzk"
 
 ### paquetes a instalar
 >- npm install express cors sequelize tedious jsonwebtoken bcryptjs
@@ -83,7 +85,10 @@
 
 
 # Crear una nueva migración
-npx sequelize-cli migration:generate --name create-users-table
+>- npx sequelize-cli migration:generate --name create-users-table
+>- npx sequelize-cli migration:generate --name users-table-username 
+>- npx sequelize-cli db:migrate
+>- npx sequelize-cli migration:generate --name migra-username
 
 # Editar el archivo generado en `migrations/`
 

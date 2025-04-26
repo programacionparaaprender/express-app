@@ -21,11 +21,20 @@ const authenticateToken = (req, res, next) => {
 
 const registerUser = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { username, name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
-        const usuario = await User.create({ name, email, password: hashedPassword });
-        const token = generateToken(usuario);
-        res.status(201).json({ token });
+        const user = await User.create({ 
+            username: username, 
+            name: name, 
+            email: email, 
+            password: hashedPassword,
+            createdAt: new Date(), 
+        });
+        const token = generateToken(user);
+        res.status(201).json({
+            user:user,
+            token:token
+        });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }
@@ -41,7 +50,10 @@ const loginUser = async (req, res) => {
         }
 
         const token = generateToken(usuario);
-        res.json({ token });
+        res.json({
+            user:usuario,
+            token:token
+        });
     } catch (error) {
         res.status(400).json({ error: error.message });
     }

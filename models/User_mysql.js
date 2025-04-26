@@ -8,6 +8,10 @@ const User = sequelize.define('User', {
         autoIncrement: true,
         primaryKey: true,
       },
+    username: {
+        type: DataTypes.STRING(30),
+        allowNull: false,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -20,10 +24,20 @@ const User = sequelize.define('User', {
     password: {
         type: DataTypes.STRING(30),
         allowNull: false
-    }
+    },
+    createdAt: {
+      type: DataTypes.DATE, // Asegúrate de usar DATE o DATETIME
+      allowNull: false,
+      defaultValue: DataTypes.NOW, // Fecha actual por defecto
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
 }, {
     tableName: 'Users',
-    timestamps: false
+    timestamps: true
 });
 
 module.exports = User;

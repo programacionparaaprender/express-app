@@ -26,12 +26,12 @@
         function enviarMensaje() {
             const input = document.getElementById('mensaje');
             const mensaje = input.value;
-            socket.emit('mensaje', mensaje); // Enviar mensaje al servidor
+            socket.emit('message', mensaje); // Enviar mensaje al servidor
             input.value = ''; // Limpiar el input
         }
 
         // Escuchar mensajes desde el servidor
-        socket.on('mensaje', (data) => {
+        socket.on('message', (data) => {
             const listaMensajes = document.getElementById('mensajes');
             const nuevoMensaje = document.createElement('li');
             nuevoMensaje.textContent = data;

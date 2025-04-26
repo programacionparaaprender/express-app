@@ -1,6 +1,13 @@
 // controllers/userController.js
 const User = require('../models/User');
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const secretKey = 'tu_clave_secreta'; // Debe ser segura y almacenada de manera segura
+
+const generateToken = (user) => {
+    return jwt.sign({ id: user.id, email: user.email }, secretKey, { expiresIn: '1h' });
+};
 
 async function deleteUser(req, res) {
     const id = req.params["id"];
@@ -49,9 +56,20 @@ async function getAllUsers(req, res) {
 
 async function createUser(req, res) {
     try {
-        const { name, email, password } = req.body;
-        const user = await User.create({ name, email, password });
-        res.status(201).json(user);
+        const { name, username, email, password } = req.body;
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = await User.create({ 
+            username: username, 
+            name: name, 
+            email: email, 
+            password: hashedPassword,
+            createdAt: new Date(), 
+        });
+        const token = generateToken(user);
+        res.status(201).json({
+            user:user,
+            token:token
+        });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }
@@ -61,8 +79,13 @@ async function updateUser(req, res) {
     try {
         const id = req.params["id"], changes = req.body;
         const { name, email } = changes;
-        const [updatedRows] = await User.update({ name, email, password }, {
-        where: { id: id },
+        const [updatedRows] = await User.update({ 
+            name: name, 
+            email:email, 
+            password: password,
+            updatedAt:new Date()
+        }, {
+            where: { id: id },
         });
 
         if(updatedRows==1){
